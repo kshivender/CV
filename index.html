@@ -1,780 +1,839 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shivender Kumar — Project Geophysicist</title>
+<meta name="description" content="Shivender Kumar — Project Geophysicist. Seismic interpretation, well correlation, prospect delineation across Indian onshore & offshore basins.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230B141B%22/><path d=%22M10 50 Q 25 20 40 50 T 70 50 T 100 50%22 stroke=%22%23E08D3C%22 stroke-width=%226%22 fill=%22none%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#0B141B;
+    --bg-panel:#101C25;
+    --bg-panel-2:#0E1920;
+    --line: rgba(237,231,217,0.12);
+    --ink:#EDE7D9;
+    --ink-dim: rgba(237,231,217,0.62);
+    --ink-faint: rgba(237,231,217,0.38);
+    --amber:#E08D3C;
+    --amber-dim: rgba(224,141,60,0.16);
+    --brine:#3D7EA6;
+    --brine-dim: rgba(61,126,166,0.16);
+    --pick-red:#B4472A;
+    --radius: 3px;
+    --maxw: 1080px;
+  }
 
-  <title>Personal Bootstrap Template</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:#0B141B; }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--amber);
+    display:inline-block;
+  }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  a{ color:inherit; }
 
-  <!-- =======================================================
-  * Template Name: Personal
-  * Updated: Jun 18 2023 with Bootstrap v5.3.0
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  .wrap{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,20,27,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:16px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .nav-brand{
+    font-family:'Fraunces', serif;
+    font-size:1rem;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .nav-brand .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 3px var(--amber-dim);
+  }
+  nav.links{ display:flex; gap:28px; }
+  nav.links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    text-decoration:none;
+    padding:4px 0;
+    border-bottom:1px solid transparent;
+    transition:color .2s, border-color .2s;
+  }
+  nav.links a:hover{ color:var(--amber); border-color:var(--amber); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--ink); cursor:pointer; }
+
+  @media (max-width:760px){
+    nav.links{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0;
+      background:var(--bg-panel);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden;
+    }
+    nav.links.open{ max-height:320px; }
+    nav.links a{ padding:14px 32px; border-bottom:1px solid var(--line); }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:110px 0 90px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-trace{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:2; }
+  .hero-inner .eyebrow{ margin-bottom:22px; }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.4rem);
+    line-height:1.02;
+    max-width:14ch;
+  }
+  .hero .role{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--amber);
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem);
+    margin-top:14px;
+  }
+  .hero .lede{
+    max-width:56ch;
+    color:var(--ink-dim);
+    margin-top:24px;
+    font-size:1.02rem;
+  }
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:22px;
+    margin-top:34px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--ink-dim);
+  }
+  .hero-meta span{ display:flex; align-items:center; gap:8px; }
+  .hero-meta svg{ width:14px; height:14px; stroke:var(--amber); flex-shrink:0; }
+
+  .hero-cta{ display:flex; gap:14px; margin-top:38px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:13px 22px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .15s ease, background .2s, border-color .2s;
+    border:1px solid transparent;
+    cursor:pointer;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-primary{ background:var(--amber); color:#0B141B; font-weight:600; }
+  .btn-primary:hover{ background:#f0a25a; }
+  .btn-ghost{ border-color:var(--line); color:var(--ink); background:transparent; }
+  .btn-ghost:hover{ border-color:var(--amber); color:var(--amber); }
+
+  /* ---------- HORIZON DIVIDER ---------- */
+  .horizon{
+    position:relative;
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 12%, var(--line) 88%, transparent);
+    margin:0;
+  }
+  .horizon .pick-label{
+    position:absolute; left:32px; top:-9px;
+    background:var(--bg-deep);
+    padding:0 10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.14em;
+    color:var(--ink-faint);
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:6px;
+  }
+  .horizon .pick-label::before{
+    content:"▸";
+    color:var(--pick-red);
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:86px 0; }
+  section.alt{ background:var(--bg-panel); }
+  .section-head{ margin-bottom:48px; max-width:60ch; }
+  .section-head h2{ font-size:clamp(1.7rem, 3.4vw, 2.3rem); margin-top:14px; }
+  .section-head p{ color:var(--ink-dim); margin-top:14px; font-size:0.98rem; }
+
+  /* ---------- PROFILE ---------- */
+  .profile-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap:56px;
+  }
+  .profile-grid p{ color:var(--ink-dim); margin:0 0 16px; }
+  .profile-grid p strong{ color:var(--ink); font-weight:600; }
+  .basin-list{
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 26px;
+  }
+  .basin-list .eyebrow{ margin-bottom:16px; }
+  .basin-item{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0;
+    border-bottom:1px solid var(--line);
+    font-size:0.92rem;
+  }
+  .basin-item:last-child{ border-bottom:none; }
+  .basin-item .b-name{ color:var(--ink); }
+  .basin-item .b-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--brine);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .stat-row{
+    display:flex; gap:0;
+    margin-top:22px;
+    border-top:1px solid var(--line);
+    padding-top:22px;
+  }
+  .stat{ flex:1; }
+  .stat b{
+    font-family:'Fraunces', serif;
+    font-size:1.9rem;
+    display:block;
+    color:var(--amber);
+    font-weight:600;
+  }
+  .stat span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+  }
+
+  @media (max-width:820px){
+    .profile-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- EXPERIENCE / STRATA TIMELINE ---------- */
+  .strata{
+    position:relative;
+    padding-left:34px;
+    border-left:2px solid var(--line);
+  }
+  .layer{
+    position:relative;
+    padding-bottom:52px;
+  }
+  .layer:last-child{ padding-bottom:0; }
+  .layer::before{
+    content:"";
+    position:absolute;
+    left:-40px; top:4px;
+    width:14px; height:14px;
+    border-radius:50%;
+    background:var(--bg-deep);
+    border:2px solid var(--amber);
+  }
+  .layer.sub::before{ border-color:var(--brine); width:10px; height:10px; left:-38px; top:6px;}
+  .layer .l-period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+  }
+  .layer.sub .l-period{ color:var(--brine); }
+  .layer h3{ font-size:1.3rem; margin-top:8px; }
+  .layer .l-org{
+    color:var(--ink-dim);
+    font-size:0.92rem;
+    margin-top:4px;
+  }
+  .layer ul{
+    margin:16px 0 0;
+    padding-left:18px;
+    color:var(--ink-dim);
+    font-size:0.94rem;
+  }
+  .layer li{ margin-bottom:8px; }
+  .layer li::marker{ color:var(--brine); }
+  .layer.sub{ margin-top:6px; }
+  .layer.sub h3{ font-size:1.05rem; }
+
+  details.more{
+    margin-top:52px;
+  }
+  details.more summary{
+    cursor:pointer;
+    list-style:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:flex; align-items:center; gap:10px;
+    padding:14px 0;
+    border-top:1px solid var(--line);
+  }
+  details.more summary::-webkit-details-marker{ display:none; }
+  details.more summary::after{
+    content:"+";
+    margin-left:auto;
+    font-size:1.1rem;
+  }
+  details.more[open] summary::after{ content:"–"; }
+  details.more .strata{ margin-top:10px; }
+
+  /* ---------- EXPERTISE / LOG TRACKS ---------- */
+  .tracks{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .track{
+    background:var(--bg-panel-2);
+    padding:28px 26px;
+  }
+  .track .eyebrow{ margin-bottom:18px; }
+  .track ul{ list-style:none; margin:0; padding:0; }
+  .track li{
+    display:flex; align-items:center; gap:10px;
+    padding:7px 0;
+    font-size:0.9rem;
+    color:var(--ink-dim);
+  }
+  .track li::before{
+    content:"";
+    width:6px; height:6px;
+    background:var(--brine);
+    flex-shrink:0;
+  }
+  @media (max-width:820px){ .tracks{ grid-template-columns:1fr; } }
+
+  /* ---------- EDUCATION / TRAINING ---------- */
+  .edu-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .edu-item{ margin-bottom:26px; }
+  .edu-item .l-period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--amber);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .edu-item h3{ font-size:1.05rem; margin-top:6px; }
+  .edu-item p{ color:var(--ink-dim); font-size:0.9rem; margin:6px 0 0; }
+  @media (max-width:820px){ .edu-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .contact-info .c-item{
+    display:flex; align-items:center; gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-info .c-item svg{ width:18px; height:18px; stroke:var(--amber); flex-shrink:0; }
+  .contact-info .c-item a{ text-decoration:none; color:var(--ink); }
+  .contact-info .c-item a:hover{ color:var(--amber); }
+
+  form.contact-form{ display:flex; flex-direction:column; gap:16px; }
+  form.contact-form label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--ink-faint);
+    margin-bottom:6px;
+    display:block;
+  }
+  form.contact-form input, form.contact-form textarea{
+    width:100%;
+    background:var(--bg-panel-2);
+    border:1px solid var(--line);
+    color:var(--ink);
+    padding:12px 14px;
+    border-radius:var(--radius);
+    font-family:'Inter', sans-serif;
+    font-size:0.92rem;
+  }
+  form.contact-form input:focus, form.contact-form textarea:focus{
+    outline:none;
+    border-color:var(--amber);
+  }
+  form.contact-form textarea{ resize:vertical; min-height:110px; }
+  form.contact-form button{
+    align-self:flex-start;
+    margin-top:6px;
+  }
+  .form-note{
+    font-size:0.78rem;
+    color:var(--ink-faint);
+    margin-top:6px;
+  }
+  @media (max-width:820px){ .contact-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-faint);
+    letter-spacing:0.04em;
+  }
+
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:2px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .hero-trace path{ animation:none !important; }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container">
-
-      <h1><a href="index.html">Emily Jones</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
-      <h2>I'm a passionate <span>graphic designer</span> from New York</h2>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link active" href="#header">Home</a></li>
-          <li><a class="nav-link" href="#about">About</a></li>
-          <li><a class="nav-link" href="#resume">Resume</a></li>
-          <li><a class="nav-link" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      </div>
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
-
-    <!-- ======= About Me ======= -->
-    <div class="about-me container">
-
-      <div class="section-title">
-        <h2>About</h2>
-        <p>Learn more about me</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/me.jpg" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <h3>UI/UX &amp; Graphic Designer</h3>
-          <p class="fst-italic">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua.
-          </p>
-          <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+123 456 7890</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>New York, USA</span></li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Master</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>PhEmailone:</strong> <span>email@example.com</span></li>
-                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-              </ul>
-            </div>
-          </div>
-          <p>
-            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-            Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
-          </p>
-        </div>
-      </div>
-
-    </div><!-- End About Me -->
-
-    <!-- ======= Counts ======= -->
-    <div class="counts container">
-
-      <div class="row">
-
-        <div class="col-lg-3 col-md-6">
-          <div class="count-box">
-            <i class="bi bi-emoji-smile"></i>
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Happy Clients</p>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-          <div class="count-box">
-            <i class="bi bi-journal-richtext"></i>
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Projects</p>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-          <div class="count-box">
-            <i class="bi bi-headset"></i>
-            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Hours Of Support</p>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-          <div class="count-box">
-            <i class="bi bi-award"></i>
-            <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Awards</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div><!-- End Counts -->
-
-    <!-- ======= Skills  ======= -->
-    <div class="skills container">
-
-      <div class="section-title">
-        <h2>Skills</h2>
-      </div>
-
-      <div class="row skills-content">
-
-        <div class="col-lg-6">
-
-          <div class="progress">
-            <span class="skill">HTML <i class="val">100%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">CSS <i class="val">90%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">JavaScript <i class="val">75%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-lg-6">
-
-          <div class="progress">
-            <span class="skill">PHP <i class="val">80%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">WordPress/CMS <i class="val">90%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-          <div class="progress">
-            <span class="skill">Photoshop <i class="val">55%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div><!-- End Skills -->
-
-    <!-- ======= Interests ======= -->
-    <div class="interests container">
-
-      <div class="section-title">
-        <h2>Interests</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-4">
-          <div class="icon-box">
-            <i class="ri-store-line" style="color: #ffbb2c;"></i>
-            <h3>Lorem Ipsum</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
-            <h3>Dolor Sitema</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
-            <h3>Sed perspiciatis</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
-            <h3>Magni Dolores</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #47aeff;"></i>
-            <h3>Nemo Enim</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
-            <h3>Eiusmod Tempor</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-file-list-3-line" style="color: #11dbcf;"></i>
-            <h3>Midela Teren</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-price-tag-2-line" style="color: #4233ff;"></i>
-            <h3>Pira Neve</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-anchor-line" style="color: #b2904f;"></i>
-            <h3>Dirada Pack</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-disc-line" style="color: #b20969;"></i>
-            <h3>Moton Ideal</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-base-station-line" style="color: #ff5828;"></i>
-            <h3>Verdo Park</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-fingerprint-line" style="color: #29cc61;"></i>
-            <h3>Flavor Nivelanda</h3>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End Interests -->
-
-    <!-- ======= Testimonials ======= -->
-    <div class="testimonials container">
-
-      <div class="section-title">
-        <h2>Testimonials</h2>
-      </div>
-
-      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-        <div class="swiper-wrapper">
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
-              <h4>Ceo &amp; Founder</h4>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
-              <h4>Designer</h4>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-              <h3>Jena Karlis</h3>
-              <h4>Store Owner</h4>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-              <h3>Matt Brandon</h3>
-              <h4>Freelancer</h4>
-            </div>
-          </div><!-- End testimonial item -->
-
-          <div class="swiper-slide">
-            <div class="testimonial-item">
-              <p>
-                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-              </p>
-              <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-              <h3>John Larson</h3>
-              <h4>Entrepreneur</h4>
-            </div>
-          </div><!-- End testimonial item -->
-
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
-
-      <div class="owl-carousel testimonials-carousel">
-
-      </div>
-
-    </div><!-- End Testimonials  -->
-
-  </section><!-- End About Section -->
-
-  <!-- ======= Resume Section ======= -->
-  <section id="resume" class="resume">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Resume</h2>
-        <p>Check My Resume</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-6">
-          <h3 class="resume-title">Sumary</h3>
-          <div class="resume-item pb-0">
-            <h4>Alice Barkley</h4>
-            <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-            <p>
-            <ul>
-              <li>Portland par 127,Orlando, FL</li>
-              <li>(123) 456-7891</li>
-              <li>alice.barkley@example.com</li>
-            </ul>
-            </p>
-          </div>
-
-          <h3 class="resume-title">Education</h3>
-          <div class="resume-item">
-            <h4>Master of Fine Arts &amp; Graphic Design</h4>
-            <h5>2015 - 2016</h5>
-            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-            <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-          </div>
-          <div class="resume-item">
-            <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-            <h5>2010 - 2014</h5>
-            <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-            <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <h3 class="resume-title">Professional Experience</h3>
-          <div class="resume-item">
-            <h4>Senior graphic design specialist</h4>
-            <h5>2019 - Present</h5>
-            <p><em>Experion, New York, NY </em></p>
-            <p>
-            <ul>
-              <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-              <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-              <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-              <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-            </ul>
-            </p>
-          </div>
-          <div class="resume-item">
-            <h4>Graphic design specialist</h4>
-            <h5>2017 - 2018</h5>
-            <p><em>Stepping Stone Advertising, New York, NY</em></p>
-            <p>
-            <ul>
-              <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-              <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-              <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-              <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section><!-- End Resume Section -->
-
-  <!-- ======= Services Section ======= -->
-  <section id="services" class="services">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Services</h2>
-        <p>My Services</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-            <h4><a href="">Lorem Ipsum</a></h4>
-            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-file"></i></div>
-            <h4><a href="">Sed ut perspiciatis</a></h4>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-tachometer"></i></div>
-            <h4><a href="">Magni Dolores</a></h4>
-            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-world"></i></div>
-            <h4><a href="">Nemo Enim</a></h4>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-slideshow"></i></div>
-            <h4><a href="">Dele cardo</a></h4>
-            <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-          <div class="icon-box">
-            <div class="icon"><i class="bx bx-arch"></i></div>
-            <h4><a href="">Divera don</a></h4>
-            <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Services Section -->
-
-  <!-- ======= Portfolio Section ======= -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        <p>My Works</p>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row portfolio-container">
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                <a href="portfolio-details.html" data-gallery="portfolioDetailsGallery" data-glightbox="type: external" class="portfolio-details-lightbox" title="Portfolio Details"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section><!-- End Portfolio Section -->
-
-  <!-- ======= Contact Section ======= -->
-  <section id="contact" class="contact">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Contact</h2>
-        <p>Contact Me</p>
-      </div>
-
-      <div class="row mt-2">
-
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>My Address</h3>
-            <p>A108 Adam Street, New York, NY 535022</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social Profiles</h3>
-            <div class="social-links">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-envelope"></i>
-            <h3>Email Me</h3>
-            <p>contact@example.com</p>
-          </div>
-        </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-phone-call"></i>
-            <h3>Call Me</h3>
-            <p>+1 5589 55488 55</p>
-          </div>
-        </div>
-      </div>
-
-      <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
-        <div class="row">
-          <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-          </div>
-          <div class="col-md-6 form-group mt-3 mt-md-0">
-            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-          </div>
-        </div>
-        <div class="form-group mt-3">
-          <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-        </div>
-        <div class="form-group mt-3">
-          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-        </div>
-        <div class="my-3">
-          <div class="loading">Loading</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Your message has been sent. Thank you!</div>
-        </div>
-        <div class="text-center"><button type="submit">Send Message</button></div>
-      </form>
-
-    </div>
-  </section><!-- End Contact Section -->
-
-  <div class="credits">
-    <!-- All the links in the footer should remain intact. -->
-    <!-- You can delete the links only if you purchased the pro version. -->
-    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
-    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="nav-brand"><span class="dot"></span> Shivender Kumar</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+    <nav class="links" id="navLinks">
+      <a href="#profile">Profile</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </div>
+</header>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+<section class="hero">
+  <svg class="hero-trace" id="heroTrace" viewBox="0 0 1200 420" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Onshore &amp; Offshore · India</div>
+    <h1>Reading the story<br>the subsurface tells.</h1>
+    <div class="role">Project Geophysicist — Seismic Interpretation &amp; Prospect Delineation</div>
+    <p class="lede">Two years across Cambay, Mahanadi, Andaman, Krishna–Godavari and Kutch–Saurashtra basins — turning 2D/3D seismic and well data into structural models, mapped prospects, and drilling decisions.</p>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Yamunanagar, Haryana, India</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>shivender.kumar.97@gmail.com</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.4 2L8 10.5a16 16 0 0 0 6 6l1.8-1.4a2 2 0 0 1 2-.4c1 .3 2 .5 3 .7a2 2 0 0 1 1.7 2z"/></svg>+91 87083 33257</span>
+    </div>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="Shivender_Kumar_CV.pdf" download>Download Résumé (PDF)</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+</section>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<div class="horizon"><span class="pick-label">T0 — Profile</span></div>
+
+<section id="profile">
+  <div class="wrap">
+    <div class="profile-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:26px;">
+          <div class="eyebrow">Who I am</div>
+          <h2>Two years, six completed projects, eighteen fields mapped.</h2>
+        </div>
+        <p>As a <strong>Project Geophysicist</strong>, I work end-to-end on seismic interpretation for both onshore and offshore exploration blocks — seismic and well data conditioning, well correlation, well-to-seismic tie, VSP analysis, horizon picking, and detailed fault mapping for structural and stratigraphic evaluation.</p>
+        <p>I contribute to isopach, isochron and pay maps, multi-attribute analysis, spectral decomposition, thin-sand identification, prospect delineation, POS-based ranking, and structure-model building for static modelling — work that feeds directly into exploration decisions and prospect maturation.</p>
+        <p>I've contributed G&amp;G interpretation for static modelling of four Cambay Basin fields — <strong>Akholjuni, Vadatal, Anklav and Kathana</strong> — and supported techno-economic evaluation across 14 fields.</p>
+      </div>
+      <div class="basin-list">
+        <div class="eyebrow">Basins worked</div>
+        <div class="basin-item"><span class="b-name">Cambay Basin</span><span class="b-tag">Onshore</span></div>
+        <div class="basin-item"><span class="b-name">Mahanadi Basin</span><span class="b-tag">Onshore</span></div>
+        <div class="basin-item"><span class="b-name">Andaman Basin</span><span class="b-tag">Offshore</span></div>
+        <div class="basin-item"><span class="b-name">Krishna–Godavari Basin</span><span class="b-tag">On/Offshore</span></div>
+        <div class="basin-item"><span class="b-name">Kutch–Saurashtra Basin</span><span class="b-tag">On/Offshore</span></div>
+        <div class="stat-row">
+          <div class="stat"><b>6</b><span>Projects completed</span></div>
+          <div class="stat"><b>2</b><span>Active projects</span></div>
+          <div class="stat"><b>18</b><span>Fields covered</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="horizon"><span class="pick-label">T10 — Experience</span></div>
+
+<section class="alt" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Field record</div>
+      <h2>Experience</h2>
+      <p>One continuing role at GERMI, spanning multiple operator and client engagements.</p>
+    </div>
+
+    <div class="strata">
+      <div class="layer">
+        <div class="l-period">July 2025 — Present</div>
+        <h3>Project Geophysicist</h3>
+        <div class="l-org">Gujarat Energy Research and Management Institute (GERMI), Gandhinagar</div>
+        <ul>
+          <li>Reviewing potential of GSPC-operated blocks CB-ON/2 and CB-ON/2000: well-to-seismic tie, horizon correlation, and well correlation for reservoir continuity.</li>
+          <li>Interpreting horizons and faults to define structural framework, reservoir compartmentalization, and depositional features indicating structural traps.</li>
+          <li>Generating seismic attribute maps, spectral decomposition, and isochronopach/isopach maps to characterize reservoir thickness.</li>
+          <li>Running prospect identification and volumetric assessment to estimate in-place hydrocarbon resource, with techno-economic support for feasibility.</li>
+        </ul>
+
+        <details class="more">
+          <summary>Show project-level engagements within this role</summary>
+          <div class="strata">
+
+            <div class="layer sub">
+              <div class="l-period">SELAN Exploration Technology Ltd.</div>
+              <h3>Mukkamala Field — thin-sand identification</h3>
+              <ul>
+                <li>Improved seismic data quality for better horizon and fault continuity.</li>
+                <li>Performed well-to-seismic tie and horizon correlation for depth-time consistency.</li>
+                <li>Generated attribute maps and geobody interpretation to understand reservoir distribution.</li>
+              </ul>
+            </div>
+
+            <div class="layer sub">
+              <div class="l-period">IOCL — OALP-X due diligence</div>
+              <h3>KG, Mahanadi, Saurashtra, Cambay, Andaman &amp; Bengal-Purnea blocks</h3>
+              <ul>
+                <li>Regional 2D/3D seismic interpretation for the offshore Andaman Basin, incl. VSP-based time-depth calibration and velocity model validation.</li>
+                <li>Mapped seafloor and basement structures using bathymetry and isochron/isopach analysis; interpreted basement configuration, oceanic crust features and Moho.</li>
+                <li>Identified channel features from 2D seismic via seismic facies and geomorphology.</li>
+                <li>Delineated prospects with preliminary resource estimation and POS evaluation.</li>
+              </ul>
+            </div>
+
+            <div class="layer sub">
+              <div class="l-period">Oil India Limited</div>
+              <h3>Mahanadi Basin blocks MN-ONHP-2018/1 &amp; /3</h3>
+              <ul>
+                <li>Applied seismic conditioning (noise reduction, signal enhancement) on 3D datasets.</li>
+                <li>Mapped faults, horizons and depositional features to identify structural traps and stratigraphic trends.</li>
+                <li>Generated isochron/isopach maps; ran attribute studies and spectral decomposition to support prospect identification.</li>
+              </ul>
+            </div>
+
+            <div class="layer sub">
+              <div class="l-period">GNRL — Cambay Basin</div>
+              <h3>Kanawara Block — pre-stack inversion, Eocene pay</h3>
+              <ul>
+                <li>Applied pre-stack inversion to derive elastic properties (impedance) for lithology and fluid indication.</li>
+                <li>Integrated well correlation, well-to-seismic tie and interpretation into subsurface model building.</li>
+                <li>One well drilled on the interpreted subsurface model is currently producing.</li>
+              </ul>
+            </div>
+
+            <div class="layer sub">
+              <div class="l-period">Baker Hughes Oilfields Pvt. Ltd.</div>
+              <h3>Static modelling — four Cambay Basin fields</h3>
+              <ul>
+                <li>Well-to-well correlation to improve confidence in horizon mapping across Akholjuni, Vadatal, Anklav and Kathana.</li>
+                <li>Built structural models supporting static modelling and reservoir studies.</li>
+              </ul>
+            </div>
+
+            <div class="layer sub">
+              <div class="l-period">RFDP Studies</div>
+              <h3>Block CB-ONN-2010/5 &amp; Bhandut Field, Cambay Basin</h3>
+              <ul>
+                <li>Horizon/fault mapping and spectral decomposition to characterize potential pay zones and identify remaining hydrocarbon potential.</li>
+                <li>Refined reservoir geometry and evaluated structural/depositional controls to support drilling-target selection for redevelopment.</li>
+              </ul>
+            </div>
+
+          </div>
+        </details>
+      </div>
+
+      <div class="layer">
+        <div class="l-period">Feb — May 2024</div>
+        <h3>Master's Dissertation</h3>
+        <div class="l-org">GERMI, Gandhinagar — "Application of Multi-Attributes, Spectral Decomposition and Inversion for Lithology Identification"</div>
+        <ul>
+          <li>Well-to-seismic ties and horizon correlation using 3D seismic data.</li>
+          <li>Identified thin sands and channels via attribute analysis and inversion.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="horizon"><span class="pick-label">T20 — Expertise</span></div>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Toolkit</div>
+      <h2>Expertise</h2>
+    </div>
+    <div class="tracks">
+      <div class="track">
+        <div class="eyebrow">Software</div>
+        <ul>
+          <li>Petrel</li>
+          <li>Hampson-Russell</li>
+          <li>OpendTect</li>
+          <li>Python</li>
+          <li>Tableau</li>
+          <li>MS Office</li>
+        </ul>
+      </div>
+      <div class="track">
+        <div class="eyebrow">Technical</div>
+        <ul>
+          <li>2D/3D seismic interpretation</li>
+          <li>Well-to-seismic tie &amp; correlation</li>
+          <li>Horizon &amp; fault mapping</li>
+          <li>Seismic attributes &amp; spectral decomposition</li>
+          <li>Pre-stack inversion</li>
+          <li>Prospect delineation &amp; POS ranking</li>
+        </ul>
+      </div>
+      <div class="track">
+        <div class="eyebrow">Interpersonal</div>
+        <ul>
+          <li>Teamwork &amp; adaptability</li>
+          <li>Active listening</li>
+          <li>Leadership</li>
+          <li>Effective communication</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="horizon"><span class="pick-label">T30 — Education</span></div>
+
+<section class="alt" id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Foundations</div>
+      <h2>Education &amp; Field Training</h2>
+    </div>
+    <div class="edu-grid">
+      <div>
+        <div class="edu-item">
+          <div class="l-period">2022 — 2024</div>
+          <h3>M.Sc. (Tech.), Applied Geophysics</h3>
+          <p>Kurukshetra University, Kurukshetra</p>
+        </div>
+        <div class="edu-item">
+          <div class="l-period">2017 — 2020</div>
+          <h3>B.Sc. (Non-Medical)</h3>
+          <p>Kurukshetra University, Kurukshetra</p>
+        </div>
+        <div class="edu-item">
+          <div class="l-period">Minor Project</div>
+          <h3>Hidden-fault detection, Yamuna / Giri / Bata / Markanda basins</h3>
+          <p>Morphological analysis and electrical resistivity to identify and confirm subsurface fault zones.</p>
+        </div>
+      </div>
+      <div>
+        <div class="edu-item">
+          <div class="l-period">Field Training</div>
+          <h3>ONGC, Vadodara</h3>
+          <p>Seismic acquisition and processing techniques for oil &amp; gas exploration.</p>
+        </div>
+        <div class="edu-item">
+          <div class="l-period">Field Training</div>
+          <h3>National Geophysical Research Institute (CSIR), Hyderabad</h3>
+          <p>Hands-on geophysical instrumentation, data processing and interpretation.</p>
+        </div>
+        <div class="edu-item">
+          <div class="l-period">Field Training</div>
+          <h3>Geological Training, Nainital, Uttarakhand</h3>
+          <p>Fieldwork skills, rock formation analysis, and regional geological history.</p>
+        </div>
+        <div class="edu-item">
+          <div class="l-period">2022 — 2024</div>
+          <h3>Overall Management Head — SEG, SPG &amp; IGU Student Chapters</h3>
+          <p>Dept. of Geophysics, Kurukshetra University — organized technical events, expert talks and alumni/industry coordination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="horizon"><span class="pick-label">TD — Contact</span></div>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Reach out</div>
+      <h2>Let's talk about a role or a prospect.</h2>
+      <p>Open to opportunities in seismic interpretation, G&amp;G evaluation, and exploration geophysics.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="c-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <a href="mailto:shivender.kumar.97@gmail.com">shivender.kumar.97@gmail.com</a>
+        </div>
+        <div class="c-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 3a2 2 0 0 1-.4 2L8 10.5a16 16 0 0 0 6 6l1.8-1.4a2 2 0 0 1 2-.4c1 .3 2 .5 3 .7a2 2 0 0 1 1.7 2z"/></svg>
+          <a href="tel:+918708333257">+91 87083 33257</a>
+        </div>
+        <div class="c-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>Yamunanagar, Haryana, India</span>
+        </div>
+      </div>
+      <div>
+        <!--
+          FORM BACKEND: this points to Formspree. Replace YOUR_FORM_ID below
+          with your own endpoint from https://formspree.io (free tier works fine).
+          See the README for step-by-step setup — GitHub Pages can't run
+          server code, so this is the "backend" for your form.
+        -->
+        <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">Send message</button>
+          <p class="form-note">Sent via Formspree — replace the form ID in index.html before this goes live. Until then, use the email above.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Shivender Kumar</span>
+    <span>Built for GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Generate animated seismic wiggle traces for the hero background
+  (function seismicHero(){
+    const svg = document.getElementById('heroTrace');
+    const ns = 'http://www.w3.org/2000/svg';
+    const W = 1200, H = 420;
+    const traceCount = 26;
+    const spacing = W / traceCount;
+
+    for (let i = 0; i < traceCount; i++){
+      const x = i * spacing + spacing/2;
+      const amp = 10 + Math.random()*16;
+      const freq = 3 + Math.random()*3;
+      const phase = Math.random()*Math.PI*2;
+      let d = `M ${x} 0 `;
+      const steps = 60;
+      for (let s = 0; s <= steps; s++){
+        const y = (H/steps)*s;
+        const wig = Math.sin((s/steps)*Math.PI*freq + phase) * amp * Math.sin((s/steps)*Math.PI);
+        d += `L ${x+wig} ${y} `;
+      }
+      const path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', d);
+      path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', i % 5 === 0 ? '#E08D3C' : '#3D7EA6');
+      path.setAttribute('stroke-width', i % 5 === 0 ? '1.4' : '0.8');
+      path.setAttribute('stroke-opacity', i % 5 === 0 ? '0.55' : '0.28');
+      svg.appendChild(path);
+    }
+  })();
+</script>
 
 </body>
-
 </html>
